@@ -1,0 +1,32 @@
+info:
+  name: AUTENTICAÇÃO
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url_local}}/login"
+  body:
+    type: json
+    data: |-
+      {
+          "dominio": "alexa",
+          "usuario": "suporte",
+          "senha": "M4st3r@2025"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        let authHeader = res.getHeader("authorization");
+        if (authHeader) {
+            bru.setEnvVar("token_auth", authHeader.replace(/^Bearer\s+/i, ""));
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

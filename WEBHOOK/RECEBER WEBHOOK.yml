@@ -1,0 +1,33 @@
+info:
+  name: RECEBER WEBHOOK
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url_servidor}}/receber-webhook"
+  body:
+    type: json
+    data: |-
+      {
+          "evento": "exemplo.criado",
+          "dados": {
+              "id": 1
+          }
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        let authHeader = res.getHeader("authorization");
+        if (authHeader) {
+            bru.setEnvVar("token_auth", authHeader.replace(/^Bearer\s+/i, ""));
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

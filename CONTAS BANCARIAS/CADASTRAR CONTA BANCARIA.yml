@@ -1,0 +1,37 @@
+info:
+  name: CADASTRAR CONTA BANCARIA
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url_servidor}}/contas-bancarias"
+  body:
+    type: json
+    data: |-
+      {
+          "idbanco": 1,
+          "numagencia": "1234",
+          "dvagencia": "5",
+          "numconta": "123456",
+          "dvconta": "7",
+          "tipoconta": "CC"
+      }
+  auth:
+    type: bearer
+    token: "{{token_auth}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        let authHeader = res.getHeader("authorization");
+        if (authHeader) {
+            bru.setEnvVar("token_auth", authHeader.replace(/^Bearer\s+/i, ""));
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

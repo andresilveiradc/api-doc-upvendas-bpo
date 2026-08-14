@@ -1,0 +1,7 @@
+info:
+  name: CAIXA E BANCOS
+  type: folder
+  seq: 8
+
+request:
+  auth: inherit

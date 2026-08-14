@@ -1,0 +1,48 @@
+info:
+  name: LISTAR MOVIMENTOS
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{url_local}}/caixa/movimentos?pagina=1&limite_pagina=20&data_de=&data_ate=&busca=&tipo=TODOS&idcontabancaria="
+  params:
+    - name: pagina
+      value: "1"
+      type: query
+    - name: limite_pagina
+      value: "20"
+      type: query
+    - name: data_de
+      value: ""
+      type: query
+    - name: data_ate
+      value: ""
+      type: query
+    - name: busca
+      value: ""
+      type: query
+    - name: tipo
+      value: "TODOS"
+      type: query
+    - name: idcontabancaria
+      value: ""
+      type: query
+  auth:
+    type: bearer
+    token: "{{token_auth}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        let authHeader = res.getHeader("authorization");
+        if (authHeader) {
+            bru.setEnvVar("token_auth", authHeader.replace(/^Bearer\s+/i, ""));
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

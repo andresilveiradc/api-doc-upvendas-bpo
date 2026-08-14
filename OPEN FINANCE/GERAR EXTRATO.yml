@@ -1,0 +1,38 @@
+info:
+  name: GERAR EXTRATO
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{url_local}}/openfinance/contas-bancarias/:idcontabancaria/extratos"
+  params:
+    - name: idcontabancaria
+      value: "44"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+          "periodoDe": "2026-01-01",
+          "periodoAte": "2026-01-31",
+          "tipoStatement": "BANK"
+      }
+  auth:
+    type: bearer
+    token: "{{token_auth}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        let authHeader = res.getHeader("authorization");
+        if (authHeader) {
+            bru.setEnvVar("token_auth", authHeader.replace(/^Bearer\s+/i, ""));
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

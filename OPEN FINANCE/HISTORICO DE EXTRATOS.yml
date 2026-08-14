@@ -1,0 +1,30 @@
+info:
+  name: HISTORICO DE EXTRATOS
+  type: http
+  seq: 6
+
+http:
+  method: GET
+  url: "{{url_local}}/openfinance/contas-bancarias/:idcontabancaria/extratos"
+  params:
+    - name: idcontabancaria
+      value: "42"
+      type: path
+  auth:
+    type: bearer
+    token: "{{token_auth}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        let authHeader = res.getHeader("authorization");
+        if (authHeader) {
+            bru.setEnvVar("token_auth", authHeader.replace(/^Bearer\s+/i, ""));
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

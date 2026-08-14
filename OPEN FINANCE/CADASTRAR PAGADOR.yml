@@ -1,0 +1,38 @@
+info:
+  name: CADASTRAR PAGADOR
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{url_local}}/openfinance/pagadores"
+  body:
+    type: json
+    data: |-
+      {
+          "nome": "Pagador de TESTE UPVendas - NORMAL",
+          "documento": "23824264030",
+          "bairro": "Centro",
+          "numeroEndereco": "100",
+          "cidade": "Sao Paulo",
+          "uf": "SP",
+          "cep": "00000000"
+      }
+  auth:
+    type: bearer
+    token: "{{token_auth}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        let authHeader = res.getHeader("authorization");
+        if (authHeader) {
+            bru.setEnvVar("token_auth", authHeader.replace(/^Bearer\s+/i, ""));
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

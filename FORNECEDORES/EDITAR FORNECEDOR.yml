@@ -1,0 +1,65 @@
+info:
+  name: EDITAR FORNECEDOR
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{url_servidor}}/fornecedores/:idpessoa"
+  params:
+    - name: idpessoa
+      value: "1"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+          "tipopessoa": "PJ",
+          "razaosocial": "Fornecedor Exemplo LTDA",
+          "nomefantasia": "Fornecedor Exemplo LTDA",
+          "cnpj": "00000000000000",
+          "inscestadual": "",
+          "ativo": true,
+          "enderecos": [
+              {
+                  "idcidade": 1,
+                  "estado": "SP",
+                  "cep": "00000000",
+                  "logradouro": "Rua Exemplo",
+                  "numero": "100",
+                  "complemento": "",
+                  "bairro": "Centro",
+                  "principal": true,
+                  "cobranca": false,
+                  "instalacao": false,
+                  "excluido": false
+              }
+          ],
+          "contatos": [
+              {
+                  "contato": "Contato Principal",
+                  "telefone": "1100000000",
+                  "celular": "11900000000",
+                  "email": "contato@exemplo.com",
+                  "principal": true
+              }
+          ]
+      }
+  auth:
+    type: bearer
+    token: "{{token_auth}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        let authHeader = res.getHeader("authorization");
+        if (authHeader) {
+            bru.setEnvVar("token_auth", authHeader.replace(/^Bearer\s+/i, ""));
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

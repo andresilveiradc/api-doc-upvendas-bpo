@@ -1,0 +1,36 @@
+info:
+  name: VINCULAR CONTA BANCARIA
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{url_local}}/openfinance/contas-bancarias/:idcontabancaria/vincular"
+  params:
+    - name: idcontabancaria
+      value: "44"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+          "idOpenfinancePagador": 9
+      }
+  auth:
+    type: bearer
+    token: "{{token_auth}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        let authHeader = res.getHeader("authorization");
+        if (authHeader) {
+            bru.setEnvVar("token_auth", authHeader.replace(/^Bearer\s+/i, ""));
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

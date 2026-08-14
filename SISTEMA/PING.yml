@@ -1,0 +1,24 @@
+info:
+  name: PING
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{url_servidor}}/ping"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        let authHeader = res.getHeader("authorization");
+        if (authHeader) {
+            bru.setEnvVar("token_auth", authHeader.replace(/^Bearer\s+/i, ""));
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

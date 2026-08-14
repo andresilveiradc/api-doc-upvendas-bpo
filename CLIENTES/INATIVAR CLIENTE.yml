@@ -1,0 +1,30 @@
+info:
+  name: INATIVAR CLIENTE
+  type: http
+  seq: 6
+
+http:
+  method: PUT
+  url: "{{url_servidor}}/pessoas/:idpessoa/inativar"
+  params:
+    - name: idpessoa
+      value: "1"
+      type: path
+  auth:
+    type: bearer
+    token: "{{token_auth}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        let authHeader = res.getHeader("authorization");
+        if (authHeader) {
+            bru.setEnvVar("token_auth", authHeader.replace(/^Bearer\s+/i, ""));
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
