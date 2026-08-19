@@ -1,16 +1,16 @@
 info:
-  name: ATUALIZAR DIVERGENCIA
+  name: IMPORTAR TODOS
   type: http
-  seq: 16
+  seq: 18
 
 http:
   method: POST
-  url: "{{url_local}}/openfinance/conciliacao/pendencias/atualizar-divergencia"
+  url: "{{url_local}}/openfinance/conciliacao/movimentos/importar-todos"
   body:
     type: json
     data: |-
       {
-          "idpendencia": 1
+          "idcontabancaria": null
       }
   auth:
     type: bearer

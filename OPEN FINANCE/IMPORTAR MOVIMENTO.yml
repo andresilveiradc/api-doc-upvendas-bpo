@@ -5,11 +5,13 @@ info:
 
 http:
   method: POST
-  url: "{{url_local}}/openfinance/conciliacao/movimentos/:idopenfinancemovimento/importar"
-  params:
-    - name: idopenfinancemovimento
-      value: "1"
-      type: path
+  url: "{{url_local}}/openfinance/conciliacao/movimentos/importar"
+  body:
+    type: json
+    data: |-
+      {
+          "idopenfinancemovimento": 1
+      }
   auth:
     type: bearer
     token: "{{token_auth}}"
