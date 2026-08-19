@@ -5,10 +5,10 @@ info:
 
 http:
   method: GET
-  url: "{{url_local}}/openfinance/contas-bancarias/:idcontabancaria"
+  url: "{{url_servidor}}/openfinance/contas-bancarias/:idcontabancaria"
   params:
     - name: idcontabancaria
-      value: "44"
+      value: "45"
       type: path
   auth:
     type: bearer

@@ -1,0 +1,42 @@
+info:
+  name: teste
+  type: http
+  seq: 9
+
+http:
+  method: get
+  url: https://ms.upvendas.app/gestor/openfinance/pagadores
+  headers:
+    - name: accept
+      value: application/json
+    - name: accept-language
+      value: pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7
+    - name: authorization
+      value: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3ODcwNTA5OTEsImlzcyI6IntcInRpcG90b2tlblwiOlwiUExBVEFGT1JNQVwiLFwiaWR1c3VhcmlvXCI6NTkzNixcImlkcGVzc29hXCI6MjQwNjgxLFwiaWRlbXByZXNhXCI6NDMyLFwiaWRkb21pbmlvXCI6MzQ4LFwiZG9taW5pb1wiOlwiYWxleGFcIn0iLCJleHAiOjE3ODcwNTI3OTF9.8G0TfPuVZvuIxyTWq2kDpvmphgdNO8aiKliTqRooeOOKVTziIqiSch4YpD0OwCC3jSE1arbIqsW2FmZRCRazZA
+    - name: origin
+      value: https://bierp.sistemaagely.com.br
+    - name: priority
+      value: u=1, i
+    - name: referer
+      value: https://bierp.sistemaagely.com.br/
+    - name: sec-ch-ua
+      value: '"Not:A-Brand";v="99", "Google Chrome";v="145", "Chromium";v="145"'
+    - name: sec-ch-ua-mobile
+      value: ?0
+    - name: sec-ch-ua-platform
+      value: '"Linux"'
+    - name: sec-fetch-dest
+      value: empty
+    - name: sec-fetch-mode
+      value: cors
+    - name: sec-fetch-site
+      value: cross-site
+    - name: user-agent
+      value: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36
+  auth: inherit
+
+settings:
+  encodeUrl: false
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

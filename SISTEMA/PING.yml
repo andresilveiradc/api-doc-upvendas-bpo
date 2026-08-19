@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{url_servidor}}/ping"
+  url: "{{url_local}}/ping"
   auth: inherit
 
 runtime:

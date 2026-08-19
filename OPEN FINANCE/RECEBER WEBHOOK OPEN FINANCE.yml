@@ -1,0 +1,47 @@
+info:
+  name: RECEBER WEBHOOK OPEN FINANCE
+  type: http
+  seq: 13
+
+http:
+  method: POST
+  url: "{{url_local}}/openfinance/webhook"
+  headers:
+    - name: x-openfinance-webhook-secret
+      value: "{{openfinance_webhook_secret}}"
+  body:
+    type: json
+    data: |-
+      {
+          "evento": "extrato.concluido",
+          "idExtrato": 1,
+          "idConta": 1,
+          "periodoDe": "2026-07-01",
+          "periodoAte": "2026-07-31",
+          "tipoStatement": "BANK",
+          "cartaoUltimosDigitos": null,
+          "status": "concluido",
+          "motivoFalha": null,
+          "totalMovimentos": 88,
+          "saldoInicial": "0",
+          "saldoFinal": "0",
+          "dataSolicitacao": "2026-08-14 12:15:29.729 -0300",
+          "dataConclusao": "2026-08-14 12:15:48.383 -0300",
+          "creditCardLimiteDisponivelAtual": null,
+          "creditCardLimiteTotalAtual": null
+      }
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        let authHeader = res.getHeader("authorization");
+        if (authHeader) {
+            bru.setEnvVar("token_auth", authHeader.replace(/^Bearer\s+/i, ""));
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

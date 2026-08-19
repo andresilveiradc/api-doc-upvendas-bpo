@@ -6,3 +6,5 @@ variables:
     value: https://ms.hml.upvendas.app/bpo-api
   - secret: true
     name: token_auth
+  - secret: true
+    name: openfinance_webhook_secret

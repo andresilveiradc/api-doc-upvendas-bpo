@@ -1,11 +1,15 @@
 info:
-  name: LISTAR CONTAS BANCARIAS
+  name: ATUALIZAR DIVERGENCIA
   type: http
-  seq: 2
+  seq: 16
 
 http:
-  method: GET
-  url: "{{url_local}}/contas-bancarias"
+  method: POST
+  url: "{{url_local}}/openfinance/conciliacao/pendencias/:idpendencia/atualizar-divergencia"
+  params:
+    - name: idpendencia
+      value: "1"
+      type: path
   auth:
     type: bearer
     token: "{{token_auth}}"

@@ -8,13 +8,13 @@ http:
   url: "{{url_local}}/openfinance/contas-bancarias/:idcontabancaria/vincular"
   params:
     - name: idcontabancaria
-      value: "44"
+      value: "42"
       type: path
   body:
     type: json
     data: |-
       {
-          "idOpenfinancePagador": 9
+          "idOpenfinancePagador": 12
       }
   auth:
     type: bearer

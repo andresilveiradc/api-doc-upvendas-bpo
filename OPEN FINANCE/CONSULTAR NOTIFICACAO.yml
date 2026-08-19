@@ -1,11 +1,11 @@
 info:
-  name: LISTAR CONTAS BANCARIAS
+  name: CONSULTAR NOTIFICACAO
   type: http
-  seq: 2
+  seq: 11
 
 http:
   method: GET
-  url: "{{url_local}}/contas-bancarias"
+  url: "{{url_local}}/openfinance/notificacoes"
   auth:
     type: bearer
     token: "{{token_auth}}"

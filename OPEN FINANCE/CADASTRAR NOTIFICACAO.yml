@@ -1,11 +1,19 @@
 info:
-  name: LISTAR CONTAS BANCARIAS
+  name: CADASTRAR NOTIFICACAO
   type: http
-  seq: 2
+  seq: 10
 
 http:
-  method: GET
-  url: "{{url_local}}/contas-bancarias"
+  method: POST
+  url: "{{url_local}}/openfinance/notificacoes"
+  body:
+    type: json
+    data: |-
+      {
+        "segredoWebhook": "{{openfinance_webhook_secret}}",
+        "eventos": ["conta.consentimento_atualizado", "extrato.concluido"],
+        "urlWebhook": "{{url_servidor}}/openfinance/webhook"
+      }
   auth:
     type: bearer
     token: "{{token_auth}}"

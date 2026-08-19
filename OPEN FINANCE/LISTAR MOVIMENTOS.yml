@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{url_local}}/openfinance/extratos/:idextrato/movimentos"
+  url: "{{url_servidor}}/openfinance/extratos/:idextrato/movimentos"
   params:
     - name: idextrato
       value: "2"
