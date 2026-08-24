@@ -1,17 +1,15 @@
 info:
-  name: IMPORTAR MOVIMENTO
+  name: DETALHAR ITEM DE PAGAMENTO
   type: http
-  seq: 15
+  seq: 3
 
 http:
-  method: POST
-  url: "{{url_local}}/openfinance/conciliacao/movimentos/importar"
-  body:
-    type: json
-    data: |-
-      {
-          "idopenfinancemovimento": 1
-      }
+  method: GET
+  url: "{{url_local}}/itens-pagamento/:iditempagamento"
+  params:
+    - name: iditempagamento
+      value: "1551"
+      type: path
   auth:
     type: bearer
     token: "{{token_auth}}"

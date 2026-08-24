@@ -8,7 +8,7 @@ http:
   url: "{{url_local}}/openfinance/extratos/:idextrato"
   params:
     - name: idextrato
-      value: "1"
+      value: "4"
       type: path
   auth:
     type: bearer

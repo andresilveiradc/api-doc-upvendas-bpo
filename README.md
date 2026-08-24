@@ -43,10 +43,11 @@ Coleção Bruno para a `bpo-api`, no mesmo padrão de `api-docs-upvendaspdv`/`ap
 | `AUTH` | `LoginController` | Login e troca de empresa. |
 | `CLIENTES` | `PessoaController` | Rotas `/pessoas`. |
 | `FORNECEDORES` | `FornecedorController` | Mesma entidade de `CLIENTES` (`cad_pessoas`), rotas `/fornecedores`. |
-| `CONTAS BANCARIAS` | `ContaBancariaController` | Contas bancárias da própria empresa (não tem relação com Open Finance). |
-| `OPEN FINANCE` | `OpenFinanceController`/`OpenFinanceWebhookController`/`OpenFinanceConciliacaoController` | Integração com o parceiro Open Finance — pagadores, contas/consentimento, extratos/movimentos, cartões, o ciclo de webhook de saída (cadastrar/consultar/desativar inscrição + receber evento) e a conciliação bancária disparada por esse webhook: `LISTAR CONCILIACAO` (situações CONFERE/DIVERGENTE/SO_BANCO/SO_CAIXA) e as ações dos botões da tela — `IMPORTAR MOVIMENTO`/`IMPORTAR TODOS` (SO_BANCO → grava no extrato do ERP, individual ou em lote), `ATUALIZAR DIVERGENCIA` (banco vira fonte de verdade) e `REMOVER SO NO CAIXA` (soft-delete). `IMPORTAR MOVIMENTO`/`IMPORTAR TODOS`/`ATUALIZAR DIVERGENCIA` recebem o id no **body** da requisição (não no path da URL, por decisão do time) — só `REMOVER SO NO CAIXA` (DELETE) continua com o id no path. Ver `.claude/plans/2026-08-06-integracao-openfinance.md` e `.claude/plans/2026-08-18-conciliacao-openfinance-movimentos.md` no repositório da API. |
+| `CONTAS BANCARIAS` | `ContaBancariaController`/`BancoController` | Contas bancárias da própria empresa (não tem relação com Open Finance). `LISTAR BANCOS` é utilitário sem paginação/filtros — lista `idbanco`/`nome` do catálogo `cad_bancos` para popular o select de banco na criação de conta bancária. |
+| `OPEN FINANCE` | `OpenFinanceController`/`OpenFinanceWebhookController`/`OpenFinanceConciliacaoController` | Integração com o parceiro Open Finance — pagadores, contas/consentimento, extratos/movimentos, cartões, o ciclo de webhook de saída (cadastrar/consultar/desativar inscrição + receber evento) e a conciliação bancária disparada por esse webhook: `LISTAR CONCILIACAO` (situações CONFERE/DIVERGENTE/SO_BANCO/SO_CAIXA — CONFERE e SO_BANCO são resolvidos automaticamente pelo próprio webhook, sem ação manual) e as ações dos botões da tela para os casos pendentes — `ATUALIZAR DIVERGENCIA` (banco vira fonte de verdade, id no **body**) e `REMOVER SO NO CAIXA` (soft-delete, id no path, DELETE). Ver `.claude/plans/2026-08-06-integracao-openfinance.md` e `.claude/plans/2026-08-18-conciliacao-openfinance-movimentos.md` no repositório da API. |
 | `WEBHOOK` | `WebhookController` | Não exige Bearer. |
 | `SISTEMA` | `PingController`/`OpenApiController` (SDK) | Health-check e spec OpenAPI. |
+| `ITENS DE PAGAMENTO` | `ItemPagamentoController` | Categorias de pagar/receber usadas na conciliação de caixa (`cad_itens_pagamento`), rotas `/itens-pagamento`. Vínculo com plano de contas fica para uma etapa futura — por enquanto o cadastro cobre `descricao`/`tipo`/`pagar`/`receber`. `tipo` aceita só `"Fixa"` ou `"Variável"`. Não existem rotas separadas de ativar/inativar — o campo `ativo` é atualizado junto com o resto dos dados via `EDITAR ITEM DE PAGAMENTO`. |
 
 **`OPEN FINANCE > RECEBER WEBHOOK OPEN FINANCE`** não exige Bearer (`auth: none`) — quem chama essa
 rota é o parceiro, não um usuário logado da bpo-api. É autenticada pelo header
@@ -65,13 +66,16 @@ Ver `.claude/plans/2026-08-06-integracao-openfinance.md` e
 `.claude/plans/2026-08-17-alinhar-webhook-openfinance.md` no repositório da API para o contrato
 completo (o antigo `codigo/INTEGRACAO_OPENFINANCE.md` foi migrado para o sistema de planos).
 
-Os endpoints de listagem (`LISTAR CLIENTES`, `LISTAR FORNECEDORES`, `LISTAR CONTAS BANCARIAS`)
-aceitam query params opcionais que não foram fixados no arquivo (adicione manualmente na aba
-Params do Bruno quando precisar filtrar/paginar):
+Os endpoints de listagem (`LISTAR CLIENTES`, `LISTAR FORNECEDORES`, `LISTAR CONTAS BANCARIAS`,
+`LISTAR ITENS DE PAGAMENTO`) aceitam query params opcionais que não foram fixados no arquivo
+(adicione manualmente na aba Params do Bruno quando precisar filtrar/paginar):
 
 - **CLIENTES/FORNECEDORES**: `pagina`, `limite_pagina`, `ordenacao`, `tipo_ordenacao`,
   `nome_pessoa`, `documento`, `email`, `situacao`.
 - **CONTAS BANCARIAS**: `pagina`, `limite_pagina`, `ordenacao`, `tipo_ordenacao`, `nome_banco`.
+- **ITENS DE PAGAMENTO**: `pagina`, `limite_pagina`, `ordenacao` (`iditempagamento`/`descricao`/
+  `tipo`), `tipo_ordenacao`, `descricao`, `tipo` (`Fixa`/`Variável`), `pagar`, `receber`,
+  `situacao`.
 - **OPEN FINANCE > LISTAR MOVIMENTOS**: `page`, `pageLimit` (nomes ainda não confirmados
   oficialmente pelo parceiro — ver "Passo a passo" em
   `.claude/plans/2026-08-06-integracao-openfinance.md`).

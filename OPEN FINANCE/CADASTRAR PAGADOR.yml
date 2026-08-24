@@ -5,18 +5,18 @@ info:
 
 http:
   method: POST
-  url: "{{url_local}}/openfinance/pagadores"
+  url: "{{url_servidor}}/openfinance/pagadores"
   body:
     type: json
     data: |-
       {
-          "nome": "Pagador de TESTE UPVendas - NORMAL",
-          "documento": "23824264030",
-          "bairro": "Centro",
-          "numeroEndereco": "100",
-          "cidade": "Sao Paulo",
+          "nome": "ALEXANDRA C. CREMON LTDA",
+          "documento": "61202938000189",
+          "bairro": "INDL. AUTONOMISTAS",
+          "numeroEndereco": "492",
+          "cidade": "Osasco",
           "uf": "SP",
-          "cep": "00000000"
+          "cep": "06010170"
       }
   auth:
     type: bearer

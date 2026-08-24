@@ -1,15 +1,11 @@
 info:
-  name: LISTAR MOVIMENTOS
+  name: LISTAR BANCOS
   type: http
-  seq: 8
+  seq: 5
 
 http:
   method: GET
-  url: "{{url_servidor}}/openfinance/extratos/:idextrato/movimentos"
-  params:
-    - name: idextrato
-      value: "6"
-      type: path
+  url: "{{url_local}}/bancos"
   auth:
     type: bearer
     token: "{{token_auth}}"

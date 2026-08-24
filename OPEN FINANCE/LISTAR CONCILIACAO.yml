@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{url_local}}/openfinance/conciliacao?pagina=1&limite_pagina=20&situacao=TODOS&idcontabancaria=&data_de=&data_ate="
+  url: "{{url_local}}/openfinance/conciliacao?pagina=1&limite_pagina=20&situacao=SO_BANCO&idcontabancaria=&data_de=&data_ate="
   params:
     - name: pagina
       value: "1"
@@ -14,7 +14,7 @@ http:
       value: "20"
       type: query
     - name: situacao
-      value: "TODOS"
+      value: SO_BANCO
       type: query
     - name: idcontabancaria
       value: ""

@@ -8,7 +8,7 @@ http:
   url: "{{url_servidor}}/openfinance/contas-bancarias/:idcontabancaria"
   params:
     - name: idcontabancaria
-      value: "45"
+      value: "43"
       type: path
   auth:
     type: bearer

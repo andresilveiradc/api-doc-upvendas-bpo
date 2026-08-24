@@ -1,0 +1,33 @@
+info:
+  name: teste de translate
+  type: http
+  seq: 9
+
+http:
+  method: post
+  url: https://34fcmxm55htypwzgfd2gfgb3aa0kijod.lambda-url.us-east-2.on.aws/
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer 83e64faf338a9a6a22b6403d69d1fcfd57b7b42ff1d3a307914155211cfa7dad
+  body:
+    type: json
+    data: |-
+      {
+        "idioma_origem": "en",
+        "idioma_destino": "pt-BR",
+        "palavras": [
+          "apple",
+          "house",
+          "computer",
+          "development"
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: false
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

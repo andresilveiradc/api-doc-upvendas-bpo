@@ -10,7 +10,7 @@ http:
     type: json
     data: |-
       {
-          "dominio": "lavoyant",
+          "dominio": "alexa",
           "usuario": "suporte",
           "senha": "M4st3r@2025"
       }

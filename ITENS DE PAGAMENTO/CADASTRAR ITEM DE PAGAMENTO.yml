@@ -1,16 +1,19 @@
 info:
-  name: IMPORTAR TODOS
+  name: CADASTRAR ITEM DE PAGAMENTO
   type: http
-  seq: 18
+  seq: 1
 
 http:
   method: POST
-  url: "{{url_local}}/openfinance/conciliacao/movimentos/importar-todos"
+  url: "{{url_servidor}}/itens-pagamento"
   body:
     type: json
     data: |-
       {
-          "idcontabancaria": null
+          "descricao": "Aluguel",
+          "tipo": "Fixa",
+          "pagar": true,
+          "receber": false
       }
   auth:
     type: bearer
