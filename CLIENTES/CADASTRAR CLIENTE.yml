@@ -5,42 +5,42 @@ info:
 
 http:
   method: POST
-  url: "{{url_servidor}}/pessoas"
+  url: "{{url_local}}/pessoas"
   body:
     type: json
     data: |-
       {
-          "tipopessoa": "PF",
-          "nome": "Cliente Exemplo",
-          "cpf": "00000000000",
-          "sexo": "M",
-          "estadocivil": "SOLTEIRO",
-          "datanascto": "1990-01-01",
-          "ativo": true,
-          "enderecos": [
-              {
-                  "idcidade": 1,
-                  "estado": "SP",
-                  "cep": "00000000",
-                  "logradouro": "Rua Exemplo",
-                  "numero": "100",
-                  "complemento": "",
-                  "bairro": "Centro",
-                  "principal": true,
-                  "cobranca": false,
-                  "instalacao": false,
-                  "excluido": false
-              }
-          ],
-          "contatos": [
-              {
-                  "contato": "Contato Principal",
-                  "telefone": "1100000000",
-                  "celular": "11900000000",
-                  "email": "contato@exemplo.com",
-                  "principal": true
-              }
-          ]
+        "tipopessoa": "PF",
+        "nome": "mikael fialho",
+        "cpf": "16006277654",
+        "sexo": "M",
+        "estadocivil": "SOLTEIRO",
+        "datanascto": "2003-05-23",
+        "ativo": true,
+        "enderecos": [
+          {
+            "idcidade": 3164704,
+            "estado": "MG",
+            "cep": "37955420",
+            "logradouro": "Avenida Jerônimo Diogo Pereira",
+            "numero": "700",
+            "complemento": "",
+            "bairro": "Residencial San Genaro",
+            "principal": true,
+            "cobranca": false,
+            "instalacao": false,
+            "excluido": false
+          }
+        ],
+        "contatos": [
+          {
+            "contato": "57.732.985 FRANCIELLY AMORIM CRUZ B",
+            "telefone": "",
+            "celular": "7799540931",
+            "email": "lojaamara24@gmail.com",
+            "principal": true
+          }
+        ]
       }
   auth:
     type: bearer
