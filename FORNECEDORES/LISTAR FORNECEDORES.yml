@@ -5,7 +5,11 @@ info:
 
 http:
   method: GET
-  url: "{{url_servidor}}/fornecedores"
+  url: "{{url_servidor}}/fornecedores?nome_pessoa=mikael"
+  params:
+    - name: nome_pessoa
+      value: mikael
+      type: query
   auth:
     type: bearer
     token: "{{token_auth}}"

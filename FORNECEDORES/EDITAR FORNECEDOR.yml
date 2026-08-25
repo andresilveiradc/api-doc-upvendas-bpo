@@ -5,45 +5,48 @@ info:
 
 http:
   method: PUT
-  url: "{{url_servidor}}/fornecedores/:idpessoa"
+  url: "{{url_local}}/fornecedores/:idpessoa"
   params:
     - name: idpessoa
-      value: "1"
+      value: "240762"
       type: path
   body:
     type: json
     data: |-
       {
-          "tipopessoa": "PJ",
-          "razaosocial": "Fornecedor Exemplo LTDA",
-          "nomefantasia": "Fornecedor Exemplo LTDA",
-          "cnpj": "00000000000000",
-          "inscestadual": "",
-          "ativo": true,
-          "enderecos": [
-              {
-                  "idcidade": 1,
-                  "estado": "SP",
-                  "cep": "00000000",
-                  "logradouro": "Rua Exemplo",
-                  "numero": "100",
-                  "complemento": "",
-                  "bairro": "Centro",
-                  "principal": true,
-                  "cobranca": false,
-                  "instalacao": false,
-                  "excluido": false
-              }
-          ],
-          "contatos": [
-              {
-                  "contato": "Contato Principal",
-                  "telefone": "1100000000",
-                  "celular": "11900000000",
-                  "email": "contato@exemplo.com",
-                  "principal": true
-              }
-          ]
+        "tipopessoa": "PF",
+        "nome": "mikael fialho va",
+        "cpf": "16006277654",
+        "sexo": "M",
+        "estadocivil": "Solteiro",
+        "datanascto": "2003-05-20 00:00:00",
+        "ativo": true,
+        "enderecos": [
+          {
+            "idendereco": 239818,
+            "idcidade": 4896,
+            "estado": "MG",
+            "cep": "37955420",
+            "logradouro": "Avenida Jerônimo Diogo Pereira",
+            "numero": "4",
+            "complemento": "",
+            "bairro": "Residencial San Genaro",
+            "principal": true,
+            "cobranca": false,
+            "instalacao": false,
+            "excluido": false
+          }
+        ],
+        "contatos": [
+          {
+            "idcontato": 277446,
+            "contato": "mikael Fialho",
+            "telefone": "",
+            "celular": "35999442003",
+            "email": "mikaelfialho10@gmail.com",
+            "principal": true
+          }
+        ]
       }
   auth:
     type: bearer

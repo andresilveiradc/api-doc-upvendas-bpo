@@ -5,10 +5,10 @@ info:
 
 http:
   method: GET
-  url: "{{url_servidor}}/fornecedores/:idpessoa"
+  url: "{{url_local}}/fornecedores/:idpessoa"
   params:
     - name: idpessoa
-      value: "1"
+      value: "240762"
       type: path
   auth:
     type: bearer

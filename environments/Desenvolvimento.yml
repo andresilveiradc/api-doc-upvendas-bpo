@@ -3,7 +3,7 @@ variables:
   - name: url_local
     value: http://127.0.0.1:8080/bpo-api
   - name: url_servidor
-    value: https://ms.upvendas.app/bpo-api
+    value: https://ms.dev.upvendas.app/bpo-api
   - secret: true
     name: token_auth
   - secret: true

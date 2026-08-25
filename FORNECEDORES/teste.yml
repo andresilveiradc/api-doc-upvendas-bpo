@@ -1,0 +1,60 @@
+info:
+  name: teste
+  type: http
+  seq: 7
+
+http:
+  method: put
+  url: https://ms.dev.upvendas.app/bpo-api/fornecedores/240707
+  headers:
+    - name: Authorization
+      value: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3ODc2NjY1OTAsImlzcyI6IntcInRpcG90b2tlblwiOlwiUExBVEFGT1JNQVwiLFwiaWR1c3VhcmlvXCI6NzUyLFwiaWRwZXNzb2FcIjowLFwiaWRlbXByZXNhXCI6NDMyLFwiaWRkb21pbmlvXCI6MzQ4LFwiZG9taW5pb1wiOlwiYWxleGFcIixcIm5vbWVcIjpcInN1cG9ydGVcIixcImVtcHJlc2FcIjpcIkFMRVhBIFNFTUlKT0lBU1wifSIsImV4cCI6MTc4NzY2ODM5MH0.kpssvoKkwzZkzVqR5PmKTMBT8Y9iQMj4f1QhDXgg2y-DYthFaNahfpmKTvEd7KE179a9Ys-1YOaoFqMLuaTCBg
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "idpessoa": 240762,
+        "tipopessoa": "PF",
+        "numeroFicha": 229,
+        "nome": "mikael fialho novo",
+        "cpf": "16006277654",
+        "sexo": "M",
+        "estadocivil": "SOLTEIRO",
+        "datanascto": "2003-05-20 00:00:00",
+        "ativo": true,
+        "enderecos": [
+          {
+            "idendereco": 239818,
+            "principal": true,
+            "cobranca": false,
+            "instalacao": false,
+            "cep": "37955420",
+            "estado": "MG",
+            "idcidade": 4896,
+            "logradouro": "Avenida Jerônimo Diogo Pereira",
+            "numero": "4",
+            "complemento": "",
+            "bairro": "Residencial San Genaro",
+            "excluido": false
+          }
+        ],
+        "contatos": [
+          {
+            "idcontato": 277446,
+            "contato": "mikael Fialho",
+            "telefone": "",
+            "celular": "35999442003",
+            "email": "mikaelfialho10@gmail.com",
+            "principal": true
+          }
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: false
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
