@@ -19,7 +19,10 @@ http:
           "dvagencia": "5",
           "numconta": "123456",
           "dvconta": "7",
-          "tipoconta": "CC"
+          "tipoconta": "CC",
+          "correntista": "Empresa Exemplo LTDA",
+          "tipo_beneficiario": "PJ",
+          "cpfcnpj_beneficiario": "12345678000190"
       }
   auth:
     type: bearer
