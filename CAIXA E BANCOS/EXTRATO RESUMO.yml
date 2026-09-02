@@ -1,23 +1,21 @@
 info:
-  name: GERAR EXTRATO
+  name: EXTRATO RESUMO
   type: http
-  seq: 5
+  seq: 3
 
 http:
-  method: POST
-  url: "{{url_servidor}}/openfinance/contas-bancarias/:idcontabancaria/extratos"
+  method: GET
+  url: "{{url_local}}/caixa/extrato-resumo?data_de=2026-08-01&data_ate=2026-08-31&idcontabancaria="
   params:
+    - name: data_de
+      value: "2026-08-01"
+      type: query
+    - name: data_ate
+      value: "2026-08-31"
+      type: query
     - name: idcontabancaria
-      value: "62"
-      type: path
-  body:
-    type: json
-    data: |-
-      {
-          "periodoDe": "2026-08-01",
-          "periodoAte": "2026-08-31",
-          "tipoStatement": "BANK"
-      }
+      value: ""
+      type: query
   auth:
     type: bearer
     token: "{{token_auth}}"

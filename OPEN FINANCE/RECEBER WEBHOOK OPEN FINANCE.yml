@@ -14,19 +14,19 @@ http:
     data: |-
       {
           "evento": "extrato.concluido",
-          "idExtrato": 6,
-          "idConta": 1,
+          "idExtrato": 13,
+          "idConta": 29,
           "periodoDe": "2026-08-01",
-          "periodoAte": "2026-08-18",
+          "periodoAte": "2026-08-31",
           "tipoStatement": "BANK",
           "cartaoUltimosDigitos": null,
           "status": "concluido",
           "motivoFalha": null,
-          "totalMovimentos": 45,
+          "totalMovimentos": 53,
           "saldoInicial": "0",
           "saldoFinal": "0",
-          "dataSolicitacao": "2026-08-14 12:15:29.729 -0300",
-          "dataConclusao": "2026-08-14 12:15:48.383 -0300",
+          "dataSolicitacao": "2026-09-01 17:20:23.845555",
+          "dataConclusao": "2026-09-01 17:21:31.367635",
           "creditCardLimiteDisponivelAtual": null,
           "creditCardLimiteTotalAtual": null
       }

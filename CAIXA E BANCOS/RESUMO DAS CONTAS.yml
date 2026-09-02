@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{url_local}}/caixa/contas-resumo"
+  url: "{{url_local}}A/caixa/contas-resumo"
   auth:
     type: bearer
     token: "{{token_auth}}"

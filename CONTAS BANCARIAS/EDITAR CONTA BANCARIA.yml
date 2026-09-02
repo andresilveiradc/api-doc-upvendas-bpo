@@ -22,7 +22,8 @@ http:
           "tipoconta": "CC",
           "correntista": "Empresa Exemplo LTDA",
           "tipo_beneficiario": "PJ",
-          "cpfcnpj_beneficiario": "12345678000190"
+          "cpfcnpj_beneficiario": "12345678000190",
+          "numeroCartao": "1234"
       }
   auth:
     type: bearer

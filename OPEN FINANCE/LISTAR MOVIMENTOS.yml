@@ -8,7 +8,7 @@ http:
   url: "{{url_servidor}}/openfinance/extratos/:idextrato/movimentos"
   params:
     - name: idextrato
-      value: "6"
+      value: "13"
       type: path
   auth:
     type: bearer

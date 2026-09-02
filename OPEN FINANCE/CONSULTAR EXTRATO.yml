@@ -5,10 +5,10 @@ info:
 
 http:
   method: GET
-  url: "{{url_local}}/openfinance/extratos/:idextrato"
+  url: "{{url_servidor}}/openfinance/extratos/:idextrato"
   params:
     - name: idextrato
-      value: "4"
+      value: "14"
       type: path
   auth:
     type: bearer
