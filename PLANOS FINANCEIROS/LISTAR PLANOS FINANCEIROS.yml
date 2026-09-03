@@ -1,23 +1,24 @@
 info:
-  name: GERAR EXTRATO
+  name: LISTAR PLANOS FINANCEIROS
   type: http
-  seq: 5
+  seq: 1
 
 http:
-  method: POST
-  url: "{{url_servidor}}/openfinance/contas-bancarias/:idcontabancaria/extratos"
+  method: GET
+  url: "{{url_local}}/planos-financeiros?pagina=1&limite_pagina=20&descricao=&analitica="
   params:
-    - name: idcontabancaria
-      value: "45"
-      type: path
-  body:
-    type: json
-    data: |-
-      {
-          "periodoDe": "2026-09-02",
-          "periodoAte": "2026-09-03",
-          "tipoStatement": "BANK"
-      }
+    - name: pagina
+      value: "1"
+      type: query
+    - name: limite_pagina
+      value: "20"
+      type: query
+    - name: descricao
+      value: ""
+      type: query
+    - name: analitica
+      value: ""
+      type: query
   auth:
     type: bearer
     token: "{{token_auth}}"

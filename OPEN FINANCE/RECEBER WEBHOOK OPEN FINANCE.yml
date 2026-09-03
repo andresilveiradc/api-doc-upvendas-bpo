@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{url_local}}/openfinance/webhook"
+  url: "{{url_servidor}}/openfinance/webhook"
   headers:
     - name: x-openfinance-webhook-secret
       value: "{{openfinance_webhook_secret}}"

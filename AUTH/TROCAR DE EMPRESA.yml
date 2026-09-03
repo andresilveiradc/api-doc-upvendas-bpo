@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{url_local}}/login/trocar-empresa"
+  url: "{{url_servidor}}/login/trocar-empresa"
   body:
     type: json
     data: |-

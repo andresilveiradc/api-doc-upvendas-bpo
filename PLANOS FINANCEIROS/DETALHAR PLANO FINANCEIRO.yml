@@ -1,20 +1,18 @@
 info:
-  name: AUTENTICAÇÃO
+  name: DETALHAR PLANO FINANCEIRO
   type: http
-  seq: 1
+  seq: 2
 
 http:
-  method: POST
-  url: "{{url_servidor}}/login"
-  body:
-    type: json
-    data: |-
-      {
-          "dominio": "lavoyant",
-          "usuario": "suporte",
-          "senha": "M4st3r@2025"
-      }
-  auth: inherit
+  method: GET
+  url: "{{url_local}}/planos-financeiros/:idplanofinanceiro"
+  params:
+    - name: idplanofinanceiro
+      value: "1"
+      type: path
+  auth:
+    type: bearer
+    token: "{{token_auth}}"
 
 runtime:
   scripts:

@@ -1,20 +1,25 @@
 info:
-  name: AUTENTICAÇÃO
+  name: CLASSIFICAR MOVIMENTO
   type: http
-  seq: 1
+  seq: 2
 
 http:
-  method: POST
-  url: "{{url_servidor}}/login"
+  method: PUT
+  url: "{{url_local}}/classificacao/movimentos/:idmovtocaixa"
+  params:
+    - name: idmovtocaixa
+      value: "1"
+      type: path
   body:
     type: json
     data: |-
       {
-          "dominio": "lavoyant",
-          "usuario": "suporte",
-          "senha": "M4st3r@2025"
+          "iditempagamento": 1,
+          "idplanofinanceiro": 1
       }
-  auth: inherit
+  auth:
+    type: bearer
+    token: "{{token_auth}}"
 
 runtime:
   scripts:
