@@ -5,14 +5,14 @@ info:
 
 http:
   method: POST
-  url: "{{url_servidor}}/login"
+  url: "{{url_local}}/login"
   body:
     type: json
     data: |-
       {
-          "dominio": "lavoyant",
-          "usuario": "suporte",
-          "senha": "M4st3r@2025"
+          "dominio": "francisco",
+          "usuario": "francisco",
+          "senha": "123"
       }
   auth: inherit
 

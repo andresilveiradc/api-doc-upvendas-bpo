@@ -1,23 +1,15 @@
 info:
-  name: GERAR EXTRATO
+  name: LISTAR LINHAS DE CLASSIFICACAO
   type: http
-  seq: 5
+  seq: 3
 
 http:
-  method: POST
-  url: "{{url_local}}/openfinance/contas-bancarias/:idcontabancaria/extratos"
+  method: GET
+  url: "{{url_local}}/classificacao/movimentos/:idmovtocaixa/linhas"
   params:
-    - name: idcontabancaria
-      value: "61"
+    - name: idmovtocaixa
+      value: "1"
       type: path
-  body:
-    type: json
-    data: |-
-      {
-          "periodoDe": "2026-06-01",
-          "periodoAte": "2026-06-30",
-          "tipoStatement": "BANK"
-      }
   auth:
     type: bearer
     token: "{{token_auth}}"

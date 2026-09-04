@@ -14,8 +14,18 @@ http:
     type: json
     data: |-
       {
-          "iditempagamento": 1,
-          "idplanofinanceiro": 1
+          "naoGerarFinanceiro": false,
+          "linhas": [
+              {
+                  "idplanofinanceiro": 1,
+                  "iditempagamento": 1,
+                  "valor": 10000
+              },
+              {
+                  "idplanofinanceiro": 2,
+                  "valor": 8450
+              }
+          ]
       }
   auth:
     type: bearer

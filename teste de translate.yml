@@ -18,10 +18,11 @@ http:
         "idioma_origem": "en",
         "idioma_destino": "pt-BR",
         "palavras": [
-          "apple",
-          "house",
-          "computer",
-          "development"
+          "Investments",
+          "Donations",
+          "Sports practice",
+          "Food delivery",
+          "Food and drinks"
         ]
       }
   auth: inherit
