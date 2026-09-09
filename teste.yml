@@ -1,0 +1,27 @@
+info:
+  name: teste
+  type: http
+  seq: 13
+
+http:
+  method: post
+  url: https://apierp-dev.upvendas.app/v1/auth/login
+  headers:
+    - name: Authorization
+      value: Basic ZGVzZW52b2x2aW1lbnRvOnA0c3NhZzNseQ==
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "dominio": "aguadecheiro",
+        "idempresa": 486
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: false
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

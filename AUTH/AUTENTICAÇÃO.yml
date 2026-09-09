@@ -10,9 +10,9 @@ http:
     type: json
     data: |-
       {
-          "dominio": "francisco",
-          "usuario": "francisco",
-          "senha": "123"
+          "dominio": "viassemijoias",
+          "usuario": "suporte",
+          "senha": "M4st3r@2025"
       }
   auth: inherit
 

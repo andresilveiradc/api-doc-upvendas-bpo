@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{url_local}}/bancos"
+  url: "{{url_servidor}}/bancos"
   auth:
     type: bearer
     token: "{{token_auth}}"

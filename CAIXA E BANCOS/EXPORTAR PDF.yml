@@ -1,23 +1,30 @@
 info:
-  name: GERAR EXTRATO
+  name: EXPORTAR PDF
   type: http
   seq: 5
 
 http:
-  method: POST
-  url: "{{url_local}}/openfinance/contas-bancarias/:idcontabancaria/extratos"
+  method: GET
+  url: "{{url_local}}/caixa/movimentos/exportar?formato=pdf&data_de=&data_ate=&busca=&tipo=TODOS&idcontabancaria=60"
   params:
+    - name: formato
+      value: pdf
+      type: query
+    - name: data_de
+      value: ""
+      type: query
+    - name: data_ate
+      value: ""
+      type: query
+    - name: busca
+      value: ""
+      type: query
+    - name: tipo
+      value: TODOS
+      type: query
     - name: idcontabancaria
       value: "60"
-      type: path
-  body:
-    type: json
-    data: |-
-      {
-          "periodoDe": "2026-08-01",
-          "periodoAte": "2026-08-31",
-          "tipoStatement": "BANK"
-      }
+      type: query
   auth:
     type: bearer
     token: "{{token_auth}}"
