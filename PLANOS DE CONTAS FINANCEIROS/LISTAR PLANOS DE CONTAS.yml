@@ -1,0 +1,41 @@
+info:
+  name: LISTAR PLANOS DE CONTAS
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{url_local}}/planos-contas-financeiros?pagina=1&limite_pagina=20"
+  params:
+    - name: pagina
+      value: "1"
+      type: query
+    - name: limite_pagina
+      value: "20"
+      type: query
+    - name: nome
+      value: ""
+      type: query
+      enabled: false
+    - name: vigencia
+      value: "true"
+      type: query
+      enabled: false
+  auth:
+    type: bearer
+    token: "{{token_auth}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        let authHeader = res.getHeader("authorization");
+        if (authHeader) {
+            bru.setEnvVar("token_auth", authHeader.replace(/^Bearer\s+/i, ""));
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

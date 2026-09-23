@@ -1,0 +1,38 @@
+info:
+  name: EDITAR PLANO DE CONTAS
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{url_local}}/planos-contas-financeiros/:idplano"
+  params:
+    - name: idplano
+      value: "60"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+          "nome": "Plano 1",
+          "vigencia": true,
+          "compartilhado": false
+      }
+  auth:
+    type: bearer
+    token: "{{token_auth}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        let authHeader = res.getHeader("authorization");
+        if (authHeader) {
+            bru.setEnvVar("token_auth", authHeader.replace(/^Bearer\s+/i, ""));
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

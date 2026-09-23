@@ -1,0 +1,30 @@
+info:
+  name: EXCLUIR PLANO DE CONTAS
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{url_local}}/planos-contas-financeiros/:idplano"
+  params:
+    - name: idplano
+      value: "60"
+      type: path
+  auth:
+    type: bearer
+    token: "{{token_auth}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        let authHeader = res.getHeader("authorization");
+        if (authHeader) {
+            bru.setEnvVar("token_auth", authHeader.replace(/^Bearer\s+/i, ""));
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
