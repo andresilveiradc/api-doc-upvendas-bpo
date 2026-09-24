@@ -1,0 +1,42 @@
+info:
+  name: CADASTRAR CONTA
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{url_local}}/planos-contas-financeiros/:idplano/contas"
+  params:
+    - name: idplano
+      value: "60"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+          "descricao": "Receita de vendas",
+          "idplanopai": 11434,
+          "analitica": true,
+          "idtipoplanofinanceiro": 1,
+          "idgrupocontas": 1,
+          "limite": 0,
+          "marketingVendas": false
+      }
+  auth:
+    type: bearer
+    token: "{{token_auth}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        let authHeader = res.getHeader("authorization");
+        if (authHeader) {
+            bru.setEnvVar("token_auth", authHeader.replace(/^Bearer\s+/i, ""));
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

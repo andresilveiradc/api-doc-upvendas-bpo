@@ -1,0 +1,7 @@
+info:
+  name: CONTAS DO PLANO FINANCEIRO
+  type: folder
+  seq: 13
+
+request:
+  auth: inherit

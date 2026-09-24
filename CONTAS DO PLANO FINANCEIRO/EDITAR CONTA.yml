@@ -1,0 +1,44 @@
+info:
+  name: EDITAR CONTA
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{url_local}}/planos-contas-financeiros/:idplano/contas/:idplanofinanceiro"
+  params:
+    - name: idplano
+      value: "60"
+      type: path
+    - name: idplanofinanceiro
+      value: "11439"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+          "descricao": "Receita de vendas",
+          "analitica": true,
+          "idtipoplanofinanceiro": 1,
+          "idgrupocontas": 1,
+          "limite": 0,
+          "marketingVendas": false
+      }
+  auth:
+    type: bearer
+    token: "{{token_auth}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        let authHeader = res.getHeader("authorization");
+        if (authHeader) {
+            bru.setEnvVar("token_auth", authHeader.replace(/^Bearer\s+/i, ""));
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
