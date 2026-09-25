@@ -1,3 +1,6 @@
+# O parametro "analitica" so deve ser usado se o front for exibir lista plana.
+# Para montar a arvore (usando idplanopai), nao filtrar por analitica - senao as
+# contas agrupadoras (pais) somem da resposta e sobram nos filhos orfaos.
 info:
   name: LISTAR CONTAS
   type: http
