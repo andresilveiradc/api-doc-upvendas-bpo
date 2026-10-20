@@ -1,16 +1,29 @@
 info:
-  name: ATUALIZAR DIVERGENCIA
+  name: APLICAR SUGESTAO
   type: http
-  seq: 16
+  seq: 4
 
 http:
   method: POST
-  url: "{{url_local}}/openfinance/conciliacao/pendencias/atualizar-divergencia"
+  url: "{{url_local}}/classificacao/movimentos/:idmovtocaixa/aplicar-sugestao"
+  params:
+    - name: idmovtocaixa
+      value: "790901"
+      type: path
   body:
     type: json
     data: |-
       {
-          "idpendencia": 1
+        "valorMovimento": 25.8,
+        "origem": "CLASSIFICACAO_BPO",
+        "idmovtocaixaOrigem": 790423,
+        "linhas": [
+          {
+            "idplanofinanceiro": 6480,
+            "iditempagamento": 1551,
+            "valor": 25.8
+          }
+        ]
       }
   auth:
     type: bearer

@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{url_local}}/openfinance/webhook"
+  url: "{{url_servidor}}/openfinance/webhook"
   headers:
     - name: x-openfinance-webhook-secret
       value: "{{openfinance_webhook_secret}}"
@@ -14,19 +14,19 @@ http:
     data: |-
       {
           "evento": "extrato.concluido",
-          "idExtrato": 13,
-          "idConta": 29,
-          "periodoDe": "2026-08-01",
-          "periodoAte": "2026-08-31",
+          "idExtrato": 123,
+          "idConta": 53,
+          "periodoDe": "2026-10-02",
+          "periodoAte": "2026-10-04",
           "tipoStatement": "BANK",
           "cartaoUltimosDigitos": null,
           "status": "concluido",
           "motivoFalha": null,
-          "totalMovimentos": 53,
+          "totalMovimentos": 20,
           "saldoInicial": "0",
           "saldoFinal": "0",
-          "dataSolicitacao": "2026-09-01 17:20:23.845555",
-          "dataConclusao": "2026-09-01 17:21:31.367635",
+          "dataSolicitacao": "2026-10-05 17:56:18.057",
+          "dataConclusao": "2026-10-05 17:56:18.057",
           "creditCardLimiteDisponivelAtual": null,
           "creditCardLimiteTotalAtual": null
       }

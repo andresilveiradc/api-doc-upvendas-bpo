@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{url_local}}/tipos-plano-financeiro"
+  url: "{{url_servidor}}/tipos-plano-financeiro"
   auth:
     type: bearer
     token: "{{token_auth}}"

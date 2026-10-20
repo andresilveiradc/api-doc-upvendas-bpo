@@ -5,17 +5,17 @@ info:
 
 http:
   method: POST
-  url: "{{url_local}}/openfinance/contas-bancarias/:idcontabancaria/extratos"
+  url: "{{url_servidor}}/openfinance/contas-bancarias/:idcontabancaria/extratos"
   params:
     - name: idcontabancaria
-      value: "60"
+      value: "59"
       type: path
   body:
     type: json
     data: |-
       {
-          "periodoDe": "2026-08-01",
-          "periodoAte": "2026-08-31",
+          "periodoDe": "2026-09-01",
+          "periodoAte": "2026-09-30",
           "tipoStatement": "BANK"
       }
   auth:

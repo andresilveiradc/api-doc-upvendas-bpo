@@ -1,0 +1,58 @@
+info:
+  name: APLICAR SUGESTAO MASSA
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{url_local}}/classificacao/movimentos/aplicar-sugestao-massa"
+  body:
+    type: json
+    data: |-
+      {
+        "itens": [
+          {
+            "idmovtocaixa": 790901,
+            "valorMovimento": 25.8,
+            "origem": "CLASSIFICACAO_BPO",
+            "idmovtocaixaOrigem": 790423,
+            "linhas": [
+              {
+                "idplanofinanceiro": 6480,
+                "iditempagamento": 1551,
+                "valor": 25.8
+              }
+            ]
+          },
+          {
+            "idmovtocaixa": 790902,
+            "valorMovimento": -150.0,
+            "origem": "TITULO_PAGAR",
+            "idtituloOrigem": 45,
+            "linhas": [
+              {
+                "idplanofinanceiro": 6481,
+                "valor": -150.0
+              }
+            ]
+          }
+        ]
+      }
+  auth:
+    type: bearer
+    token: "{{token_auth}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        let authHeader = res.getHeader("authorization");
+        if (authHeader) {
+            bru.setEnvVar("token_auth", authHeader.replace(/^Bearer\s+/i, ""));
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
