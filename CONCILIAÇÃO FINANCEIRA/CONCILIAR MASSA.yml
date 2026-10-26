@@ -1,0 +1,45 @@
+info:
+  name: CONCILIAR MASSA
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{url_local}}/conciliacao-financeira/movimentos/conciliar-massa"
+  body:
+    type: json
+    data: |-
+      {
+        "itens": [
+          {
+            "idmovtocaixa": 790901,
+            "valorMovimento": 25.8,
+            "tipoTitulo": "RECEBER",
+            "idtitulo": 42
+          },
+          {
+            "idmovtocaixa": 790902,
+            "valorMovimento": -150.0,
+            "tipoTitulo": "PAGAR",
+            "idtitulo": 45
+          }
+        ]
+      }
+  auth:
+    type: bearer
+    token: "{{token_auth}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        let authHeader = res.getHeader("authorization");
+        if (authHeader) {
+            bru.setEnvVar("token_auth", authHeader.replace(/^Bearer\s+/i, ""));
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

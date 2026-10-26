@@ -1,0 +1,7 @@
+info:
+  name: CONCILIAÇÃO FINANCEIRA
+  type: folder
+  seq: 15
+
+request:
+  auth: inherit
