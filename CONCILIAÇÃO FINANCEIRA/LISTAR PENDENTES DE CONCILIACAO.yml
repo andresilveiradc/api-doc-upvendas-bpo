@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{url_local}}/conciliacao-financeira/movimentos?pagina=1&limite_pagina=20&data_de=&data_ate=&busca=&tipo=TODOS&idcontabancaria=&situacao=TODOS"
+  url: "{{url_local}}/conciliacao-financeira/movimentos?pagina=1&limite_pagina=20&data_de=&data_ate=&busca=&tipo=TODOS&idcontabancaria=&tipo_titulo=TODOS&situacao=TODOS"
   params:
     - name: pagina
       value: "1"
@@ -27,6 +27,9 @@ http:
       type: query
     - name: idcontabancaria
       value: ""
+      type: query
+    - name: tipo_titulo
+      value: TODOS
       type: query
     - name: situacao
       value: TODOS

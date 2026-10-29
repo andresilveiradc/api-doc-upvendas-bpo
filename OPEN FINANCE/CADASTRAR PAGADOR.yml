@@ -10,13 +10,13 @@ http:
     type: json
     data: |-
       {
-          "nome": "ALEXANDRA C. CREMON LTDA",
-          "documento": "61202938000189",
-          "bairro": "INDL. AUTONOMISTAS",
-          "numeroEndereco": "492",
-          "cidade": "Osasco",
-          "uf": "SP",
-          "cep": "06010170"
+          "nome": "Josymara Augusta Amaral Dos Reis",
+          "documento": "14668879665",
+          "bairro": "Centro",
+          "numeroEndereco": "3140",
+          "cidade": "Guanhaes",
+          "uf": "MG",
+          "cep": "39740000"
       }
   auth:
     type: bearer

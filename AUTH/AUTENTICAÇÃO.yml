@@ -5,12 +5,12 @@ info:
 
 http:
   method: POST
-  url: "{{url_local}}/login"
+  url: "{{url_servidor}}/login"
   body:
     type: json
     data: |-
       {
-          "dominio": "viassemijoias",
+          "dominio": "joyjoias",
           "usuario": "suporte",
           "senha": "M4st3r@2025"
       }

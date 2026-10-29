@@ -1,0 +1,37 @@
+info:
+  name: SINCRONIZAR EXTRATO
+  type: http
+  seq: 18
+
+http:
+  method: POST
+  url: "{{url_servidor}}/openfinance/contas-bancarias/:idcontabancaria/sincronizar"
+  params:
+    - name: idcontabancaria
+      value: "61"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+          "periodoDe": "2026-09-29",
+          "periodoAte": "2026-10-29"
+      }
+  auth:
+    type: bearer
+    token: "{{token_auth}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        let authHeader = res.getHeader("authorization");
+        if (authHeader) {
+            bru.setEnvVar("token_auth", authHeader.replace(/^Bearer\s+/i, ""));
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
